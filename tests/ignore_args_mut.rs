@@ -3,7 +3,7 @@ use ignore_args::ignore_args_mut;
 #[test]
 fn works() {
     let mut counter = 0;
-    let function = move || {
+    let function = || {
         counter += 1;
         counter
     };
