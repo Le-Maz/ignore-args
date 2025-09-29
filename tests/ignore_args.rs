@@ -9,7 +9,6 @@ fn works_for_fn() {
     assert_eq!(modified_function(1, ""), "hello");
 }
 
-
 #[test]
 fn works_for_fn_by_ref() {
     let function = || "hello";
@@ -36,5 +35,8 @@ fn works_for_fn_mut_by_ref() {
 fn has_correct_layout() {
     let original_function = || "hello";
     let modified_function = ignore_args(original_function);
-    assert_eq!(std::mem::size_of_val(&modified_function), 0);
+    assert_eq!(
+        std::mem::size_of_val(&original_function),
+        std::mem::size_of_val(&modified_function)
+    );
 }
