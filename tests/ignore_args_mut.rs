@@ -1,13 +1,13 @@
-use ignore_args::ignore_args;
+use ignore_args::ignore_args_mut;
 
 #[test]
-fn works_for_fn_mut() {
+fn works() {
     let mut counter = 0;
-    let mut function = move || {
+    let function = move || {
         counter += 1;
         counter
     };
-    let mut modified_function = ignore_args(function);
+    let mut modified_function = ignore_args_mut(function);
     assert_eq!(modified_function(), 1);
     assert_eq!(modified_function(1), 2);
     assert_eq!(modified_function(1, ""), 3);
